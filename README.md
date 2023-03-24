@@ -2,9 +2,9 @@
 
 This repository contains a Docker Compose file to help set up the required Docker containers for the ISYS6009 Enterprise Network Security course. This Docker Compose file will spin up containers for the following services:
 
--- OWASP Juics SHop
--- Wireshark
--- More to be added
+- OWASP Juics SHop
+- Wireshark
+- More to be added
 
 ## Getting Started
 
