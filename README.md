@@ -2,9 +2,9 @@
 
 This repository contains a Docker Compose file to help set up the required Docker containers for the ISYS6009 Enterprise Network Security course. This Docker Compose file will spin up containers for the following services:
 
-- OWASP Juics SHop
+- OWASP Juice Shop
 - Wireshark
-- More to be added
+- more coming soon
 
 ## Getting Started
 
@@ -12,11 +12,11 @@ To use this Docker Compose file, you will need to have Docker and Docker Compose
 
 1. Clone this repository:
 
-    git clone https://github.com/michael-borck/ISYS6009-Enterprise-Network-Security-Docker-Compose.git
+    git clone https://github.com/michael-borck/ISYS6009-ENS-Docker.git
 
 2. Navigate to the cloned repository:
 
-    cd ISYS6009-Enterprise-Network-Security-Docker-Compose
+    cd ISYS6009-ENS-Docker
 
 3. Run the Docker Compose file:
 
@@ -26,4 +26,6 @@ To use this Docker Compose file, you will need to have Docker and Docker Compose
 
 5. Once all the containers are running, you can access each service by navigating to the following URLs in your web browser:
 
+- OWASP Juice Shop:  https://localhost:3000
+- Wireshark: https://localhost:14500 (via Xdrp, username/passowrd: wireshark/wireshark)
     
