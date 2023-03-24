@@ -21,3 +21,7 @@ services:
       - XPRA_PW=wireshark # password to access wireshark
     volumes:
       - ./caps:/home/wireshark
+  juice:
+    image: bkimminich/juice-shop
+    ports:
+      - 3000:3000
