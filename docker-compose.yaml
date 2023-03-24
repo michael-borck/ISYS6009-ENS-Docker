@@ -1,20 +1,21 @@
----
-version: "2.1"
+version: '2'
 services:
-  wireshark:
-    image: lscr.io/linuxserver/wireshark:latest
-    container_name: wireshark
-    cap_add:
-      - NET_ADMIN
-    security_opt:
-      - seccomp:unconfined #optional
-    network_mode: host
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Etc/UTC
-    volumes:
-      - /path/to/config:/config
+  proxy:
+    image: haproxy:1
+    container_name: proxy
+    restart: always
     ports:
-      - 3000:3000 #optional
-    restart: unless-stopped
+#      - 80:80
+#      - 445:445
+#      - 2049:2049
+      - 14500:14500 # required to access wireshark, change first port if necessary
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:Z
+  wireshark:
+    image: "ffeldhaus/wireshark:0.5"
+    container_name: wireshark
+    restart: always
+    privileged: true
+    network_mode: "service:proxy"
+    environment:
+      - XPRA_PW=wireshark # password to access wireshark
