@@ -19,3 +19,5 @@ services:
     network_mode: "service:proxy"
     environment:
       - XPRA_PW=wireshark # password to access wireshark
+    volumes:
+      - ./caps:/home/wireshark
