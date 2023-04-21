@@ -26,7 +26,7 @@ services:
     ports:
       - 3000:3000
   secutils:
-    image: michelborck/secutils
+    image: michaelborck/secutils
     container_name: secutils
     ports:
       - "514:514/tcp"
