@@ -1,4 +1,4 @@
-version: '2'
+version: '3.9'
 services:
   proxy:
     image: haproxy:1
@@ -46,7 +46,18 @@ services:
     networks:
       custom_network:
         ipv4_address: 192.168.1.5
-
+ xfce:
+    image: michaelborck/xrdp-xfce-image
+    container_name: xfce
+    restart: always
+    environment:
+      - XPRA_USERNAME=xfce
+      - XPRA_PW=xfce
+    ports:
+      - 14501:14500
+    networks:
+      custom_network:
+        ipv4_address: 192.168.1.6
 networks:
   custom_network:
     driver: bridge
