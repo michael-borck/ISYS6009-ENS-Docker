@@ -25,3 +25,11 @@ services:
     image: bkimminich/juice-shop
     ports:
       - 3000:3000
+  secutils:
+    image: michelborck/secutils
+    container_name: secutils
+    ports:
+      - "514:514/tcp"
+      - "514:514/udp"
+    volumes:
+      - ./data:/data
