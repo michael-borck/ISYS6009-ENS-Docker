@@ -28,6 +28,7 @@ services:
   secutils:
     image: michaelborck/secutils
     container_name: secutils
+    command: tail -f /dev/null
     ports:
       - "514:514/tcp"
       - "514:514/udp"
