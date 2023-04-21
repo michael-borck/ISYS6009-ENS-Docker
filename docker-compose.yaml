@@ -5,12 +5,13 @@ services:
     container_name: proxy
     restart: always
     ports:
-#      - 80:80
-#      - 445:445
-#      - 2049:2049
-      - 14500:14500 # required to access wireshark, change first port if necessary
+      - 14500:14500
     volumes:
       - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:Z
+    networks:
+      custom_network:
+        ipv4_address: 192.168.1.2
+
   wireshark:
     image: "ffeldhaus/wireshark:0.5"
     container_name: wireshark
@@ -18,13 +19,21 @@ services:
     privileged: true
     network_mode: "service:proxy"
     environment:
-      - XPRA_PW=wireshark # password to access wireshark
+      - XPRA_PW=wireshark
     volumes:
       - ./caps:/home/wireshark
+    networks:
+      custom_network:
+        ipv4_address: 192.168.1.3
+
   juice:
     image: bkimminich/juice-shop
     ports:
       - 3000:3000
+    networks:
+      custom_network:
+        ipv4_address: 192.168.1.4
+
   secutils:
     image: michaelborck/secutils
     container_name: secutils
@@ -34,3 +43,14 @@ services:
       - "514:514/udp"
     volumes:
       - ./data:/data
+    networks:
+      custom_network:
+        ipv4_address: 192.168.1.5
+
+networks:
+  custom_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.1.0/24
