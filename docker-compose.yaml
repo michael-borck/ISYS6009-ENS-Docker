@@ -30,7 +30,6 @@ services:
       - 3000:3000
     networks:
       custom_network:
-        ipv4_address: 192.168.1.4
   secutils:
     image: michaelborck/secutils
     container_name: secutils
@@ -43,18 +42,6 @@ services:
     networks:
       custom_network:
         ipv4_address: 192.168.1.5
-  xfce:
-    image: michaelborck/xrdp-xfce-image
-    container_name: xfce
-    restart: always
-    environment:
-      - XPRA_USERNAME=xfce
-      - XPRA_PW=xfce
-    ports:
-      - 14501:14500
-    networks:
-      custom_network:
-        ipv4_address: 192.168.1.6
 networks:
   custom_network:
     driver: bridge
